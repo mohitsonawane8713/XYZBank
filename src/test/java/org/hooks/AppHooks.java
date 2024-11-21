@@ -36,15 +36,23 @@ public class AppHooks {
 	@After(order=10)
 	public void getScreenShot() throws IOException
 	{
-		String scnName = AppHooks.scn.getName();
-		scnName = scnName.replaceAll(" ","_")+".png";
-		
-		File set = new File("./src/test/resources/Images/"+scnName);
-		TakesScreenshot ts =(TakesScreenshot)AppHooks.driver;
-		
-		File get = ts.getScreenshotAs(OutputType.FILE);
-		
-		FileHandler.copy(get, set);
+		if(AppHooks.scn.isFailed())
+		{
+			String scnName = AppHooks.scn.getName();
+			scnName = scnName.replaceAll(" ","_")+".png";
+			
+			TakesScreenshot ts = (TakesScreenshot)driver;
+			byte [] bt = ts.getScreenshotAs(OutputType.BYTES);
+			
+			AppHooks.scn.attach(bt, "image/png", scnName);
+			
+		}
+//		File set = new File("./src/test/resources/Images/"+scnName);
+//		TakesScreenshot ts =(TakesScreenshot)AppHooks.driver;
+//		
+//		File get = ts.getScreenshotAs(OutputType.FILE);
+//		
+//		FileHandler.copy(get, set);
 		
 	}
 	

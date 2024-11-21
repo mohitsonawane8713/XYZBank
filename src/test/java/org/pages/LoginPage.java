@@ -30,10 +30,12 @@ public class LoginPage {
 	}
 	public String getCurrentURL()
 	{
+		AppHooks.gu.waitforURlContains(AppHooks.driver, 20, AppHooks.prop.getProperty("Url"));
 		return driver.getCurrentUrl();
 	}
 	public String getCurrentTitle()
 	{
+		AppHooks.gu.waitforTitleContains(AppHooks.driver, 20, AppHooks.prop.getProperty("LoginPageTitle"));
 		return driver.getTitle();
 	}
 	public boolean homeButtonisDisplayed()
