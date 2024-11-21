@@ -17,6 +17,18 @@ public class ManagerPage {
 	@FindBy(xpath="//button[@ng-click='showCust()']")
 	private WebElement btnCustomer;
 	
+	@FindBy(xpath="//input[@placeholder='First Name']")
+	private WebElement firstName;
+	
+	@FindBy(xpath="//input[@placeholder='Last Name']")
+	private WebElement lastName;
+	
+	@FindBy(xpath="//input[@placeholder='Post Code']")
+	private WebElement postCode;
+	
+	@FindBy(xpath="//button[text()='Add Customer']")
+	private WebElement addCustomerBtn;
+	
 	WebDriver driver;
 	
 	public ManagerPage(WebDriver driver)
@@ -26,17 +38,62 @@ public class ManagerPage {
 	}
 	public String addCustomerFieldName()
 	{
-		AppHooks.gu.waitForVisibilityofElement(AppHooks.driver, 30, btnAddCustomer);
+		AppHooks.gu.waitForVisibilityofElement(driver, 30, btnAddCustomer);
 		return btnAddCustomer.getText();
 	}
 	public String openAccountFieldName()
 	{
-		AppHooks.gu.waitForVisibilityofElement(AppHooks.driver, 30, btnOpenAccount);
+		AppHooks.gu.waitForVisibilityofElement(driver, 30, btnOpenAccount);
 		return btnOpenAccount.getText();
 	}
 	public String customerAccountField()
 	{
-		AppHooks.gu.waitForVisibilityofElement(AppHooks.driver, 30, btnCustomer);
+		AppHooks.gu.waitForVisibilityofElement(driver, 30, btnCustomer);
 		return btnCustomer.getText();
+	}
+	public void clickon_AddCustomer()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnAddCustomer);
+		AppHooks.gu.clickByJS(AppHooks.driver, btnAddCustomer);
+	}
+	public boolean firstNameisDisplalyed()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, firstName);
+		return firstName.isDisplayed();
+	}
+	public boolean lastNameisDisplayed()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, lastName);
+		return lastName.isDisplayed();
+	}
+	public boolean postCodeisDisplayed()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, postCode);
+		return postCode.isDisplayed();
+	}
+	public boolean btnAddCustomerisDisplayed()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, addCustomerBtn);
+		return addCustomerBtn.isDisplayed();
+	}
+	public void enterFirstName(String firstName)
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, this.firstName);
+		this.firstName.sendKeys(firstName);
+	}
+	public void enteredLastName(String lastName)
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, this.lastName);
+		this.lastName.sendKeys(lastName);
+	}
+	public void enteredPostalCode(String postCode)
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, this.postCode);
+		this.postCode.sendKeys(postCode);
+	}
+	public void clickonAddCustomer()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, addCustomerBtn);
+		AppHooks.gu.clickByJS(driver, addCustomerBtn);
 	}
 }

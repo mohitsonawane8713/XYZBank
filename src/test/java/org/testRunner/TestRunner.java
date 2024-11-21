@@ -12,7 +12,7 @@ import io.cucumber.testng.CucumberOptions;
 				    //"junit:Reports/junit_report.xml",
 					//"json:Reports/nunit_report.json",
 					//"html:Reports/html_report.html",
-					"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+					//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 		 }
 		)
 

@@ -55,12 +55,7 @@ public class LoginPage {
 	}
 	public void clickOnManagerLogin()
 	{
-		AppHooks.gu.waitForVisibilityofElement(AppHooks.driver, 30, btnManagerLogin);
-		//.click();
-		//Actions act = new Actions(AppHooks.driver);
-		//act.click(btnManagerLogin);
-		JavascriptExecutor js = (JavascriptExecutor) AppHooks.driver;
-		js.executeScript("arguments[0].click();", btnManagerLogin);
-		
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnManagerLogin);
+		AppHooks.gu.clickByJS(driver, btnManagerLogin);	
 	}
 }
