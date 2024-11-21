@@ -23,20 +23,20 @@ public class LoginStepDef {
 	public void url_is_displayed_as_expected() {
 		Assert.assertEquals(lp.getCurrentURL(), AppHooks.prop.getProperty("Url"));
 	}
-	@And("Title is Displayed as {string}")
-	public void title_is_displayed_as(String string) {
+	@And("Title should be Displayed as {string}")
+	public void title_should_be_displayed_as(String string) {
 		Assert.assertEquals(lp.getCurrentTitle(), string);
 	}
-	@Then("Home button is Displayed")
-	public void home_button_is_displayed() {
+	@Then("Home button should be Displayed")
+	public void home_button_should_be_displayed() {
 	    Assert.assertTrue(lp.homeButtonisDisplayed());
 	}
-	@Then("Customer Login button is Displayed")
-	public void customer_login_button_is_displayed() {
+	@Then("Customer Login button should be Displayed")
+	public void customer_login_button_should_be_displayed() {
 	    Assert.assertTrue(lp.customerButtonisDisplayed());
 	}
-	@Then("Manager Login button is Displayed")
-	public void manager_login_button_is_displayed() {
+	@Then("Manager Login button should be Displayed")
+	public void manager_login_button_should_be_displayed() {
 	   Assert.assertTrue(lp.managerLoginButtonisDisplayed());
 	}
 	

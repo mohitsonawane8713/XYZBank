@@ -8,6 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 		 glue = {"org/stepDefination","org/hooks"},
 		 monochrome = true,
 		 dryRun = false,
+		 tags = "@smoke",
 		 plugin = {"pretty",
 				    //"junit:Reports/junit_report.xml",
 					//"json:Reports/nunit_report.json",

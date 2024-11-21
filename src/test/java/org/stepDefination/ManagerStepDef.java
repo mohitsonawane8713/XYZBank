@@ -1,17 +1,14 @@
 package org.stepDefination;
 
-import static org.testng.Assert.assertEquals;
-
-import java.time.Duration;
+import java.util.List;
 
 import org.hooks.AppHooks;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.pages.LoginPage;
 import org.pages.ManagerPage;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
+import org.utilities.ExcelUtility;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,8 +21,8 @@ public class ManagerStepDef {
 		LoginPage lp = new LoginPage(AppHooks.driver);
 		lp.clickOnManagerLogin();
 	}
-	@Then("{string}, {string}, {string} Fields is Displayed")
-	public void manager_page_fields_is_Displayed(String str1,String str2,String str3)
+	@Then("{string}, {string}, {string} Fields should be Displayed")
+	public void manager_page_fields_should_be_Displayed(String str1,String str2,String str3)
 	{
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		SoftAssert sa = new SoftAssert();
@@ -39,41 +36,47 @@ public class ManagerStepDef {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.clickon_AddCustomer();
 	}
-	@Then("First Name Field is Displayed")
-	public void first_name_field_is_displayed() {
+	@Then("First Name Field should be Displayed")
+	public void first_name_field_should_be_displayed() {
 	    ManagerPage mp = new ManagerPage(AppHooks.driver);
 	    mp.firstNameisDisplalyed();
 	}
-	@Then("Last Name Field is Displayed")
-	public void last_name_field_is_displayed() {
+	@Then("Last Name Field should be Displayed")
+	public void last_name_field_should_be_displayed() {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.lastNameisDisplayed();
 	}
-	@Then("Postal Code Field is Displayed")
-	public void postal_code_field_is_displayed() {
+	@Then("Postal Code Field should be Displayed")
+	public void postal_code_field_should_be_displayed() {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.postCodeisDisplayed();
 	}
-	@Then("Add Customer button is Displayed")
+	@Then("Add Customer button should be Displayed")
 	public void add_customer_button_is_Displayed()
 	{
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.btnAddCustomerisDisplayed();
 	}
 	@When("User Enter Valid Crediantials")
-	public void user_enter_first_name() {
+	public void user_enter_first_name(){
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
-		mp.enterFirstName("Mohit");
-		mp.enteredLastName("Sonawane");
-		mp.enteredPostalCode("12345");
+		
+		ExcelUtility eu = new ExcelUtility();
+		List l1 = eu.getExcelSheetData(0);
+		for(int i=0;i<l1.size();i++)
+		{
+			mp.enterFirstName(l1.get(i).toString());
+			mp.enteredLastName(l1.get(i+=1).toString());
+			mp.enteredPostalCode(l1.get(i+=1).toString());
+		}
 	}
 	@When("User Click on Add Customer button")
 	public void user_click_on_add_customer_button() {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.clickonAddCustomer();
 	}
-	@Then("Customer is Created Successfully")
-	public void customer_is_created_successfully() {
+	@Then("Customer should be Created Successfully")
+	public void customer_should_be_created_successfully() {
 	    Alert alt = AppHooks.driver.switchTo().alert();
 	    
 	    String str = alt.getText();
