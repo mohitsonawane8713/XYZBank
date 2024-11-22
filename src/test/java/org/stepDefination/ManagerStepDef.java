@@ -57,8 +57,8 @@ public class ManagerStepDef {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.btnAddCustomerisDisplayed();
 	}
-	@When("User Enter Valid Crediantials")
-	public void user_enter_first_name(){
+	@When("Manager Enter Valid Crediantials")
+	public void manager_enter_Valid_Crediantials(){
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		
 		ExcelUtility eu = new ExcelUtility();
@@ -70,8 +70,8 @@ public class ManagerStepDef {
 			mp.enteredPostalCode(l1.get(i+=1).toString());
 		}
 	}
-	@When("User Click on Add Customer button")
-	public void user_click_on_add_customer_button() {
+	@When("Manager Click on Add Customer button")
+	public void manager_click_on_add_customer_button() {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		mp.clickonAddCustomer();
 	}
@@ -86,5 +86,52 @@ public class ManagerStepDef {
 	    Assert.assertEquals(AppHooks.prop.getProperty("CreateCustomerMessage"), str);
 	    alt.accept();
 	}
+	@When("Manager Click on Open Account button")
+	public void manager_Click_on_Open_Account_button()
+	{
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		mp.clickonOpenAccount();
+	}
+	@When("Manager Select Customer Name is {string}")
+	public void manager_select_customer_name(String string) {
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		mp.selectUser(string);
+	}
+	@When("Manager Select Currency is {string}")
+	public void manager_select_currency(String string) {
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		mp.selectCurrenecy(string);
+	}
+	@When("Manager Click on Process button")
+	public void manager_click_on_process_button() {
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		mp.clickonProcess();
+	}
+	@Then("Account Should be Created Successfully")
+	public void account_should_be_created_successfully() {
+	   Alert alt = AppHooks.driver.switchTo().alert();
+	   String str = alt.getText();
+	   str = str.replaceAll("[^a-zA-Z]", " ");
+	   str = str.trim();
+	   Assert.assertEquals(AppHooks.prop.getProperty("createAccountMessage"), str);
+	   alt.accept();
+	}
+	@When("Manager Click on Customers")
+	public void manager_click_on_customers() {
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		mp.clickonCustomer();
+	}
+	@When("Manager Search Customer Name {string}")
+	public void manager_search_customer_name(String string) {
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		mp.searchCustomer(string);
+	}
+	@Then("Customer Account Information Should be Displayed")
+	public void customer_account_information_should_be_displayed() {
+		ManagerPage mp = new ManagerPage(AppHooks.driver);
+		AppHooks.scn.log("Total Account Are : "+mp.totalAccounts());
+		Assert.assertTrue(mp.accountNumbers());
+	}
+
 
 }

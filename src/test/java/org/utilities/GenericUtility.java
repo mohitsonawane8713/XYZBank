@@ -2,16 +2,45 @@ package org.utilities;
 
 import java.time.Duration;
 
-import org.hooks.AppHooks;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GenericUtility {
 	
+	public void selectByIndex(WebElement ele,int index)
+	{
+		Select sel = new Select(ele);
+		sel.selectByIndex(index);
+	}
+	public void selectByVisibleText(WebElement ele,String name)
+	{
+		Select sel = new Select(ele);
+		sel.selectByVisibleText(name);
+	}
+	public void selectByValue(WebElement ele,String name)
+	{
+		Select sel = new Select(ele);
+		sel.deselectByValue(name);
+	}
+	public void deselectByIndex(WebElement ele,int index)
+	{
+		Select sel = new Select(ele);
+		sel.deselectByIndex(index);
+	}
+	public void deselectByVisibleText(WebElement ele,String name)
+	{
+		Select sel = new Select(ele);
+		sel.deselectByVisibleText(name);
+	}
+	public void deselectByValue(WebElement ele,String name)
+	{
+		Select sel = new Select(ele);
+		sel.selectByValue(name);
+	}
 	
 	public void clickByJS(WebDriver driver,WebElement element)
 	{

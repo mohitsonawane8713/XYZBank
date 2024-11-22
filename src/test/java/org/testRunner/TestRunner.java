@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 		 features = "./src/test/resources/Feature",
 		 glue = {"org/stepDefination","org/hooks"},
 		 monochrome = true,
-		 dryRun = false,
+		// dryRun = true,
 		 tags = "@smoke",
 		 plugin = {"pretty",
 				    //"junit:Reports/junit_report.xml",

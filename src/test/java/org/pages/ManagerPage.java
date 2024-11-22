@@ -1,5 +1,8 @@
 package org.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hooks.AppHooks;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,6 +31,21 @@ public class ManagerPage {
 	
 	@FindBy(xpath="//button[text()='Add Customer']")
 	private WebElement addCustomerBtn;
+	
+	@FindBy(xpath="//select[@id='userSelect']")
+	private WebElement userSelect;
+	
+	@FindBy(xpath="//select[@id='currency']")
+	private WebElement currencySelect;
+	
+	@FindBy(xpath="// button[text()='Process']")
+	private WebElement btnProcess;
+	
+	@FindBy(xpath="// input[@placeholder='Search Customer']")
+	private WebElement searchCustomer;
+	
+	@FindBy(xpath="// tr[@class='ng-scope']/td[4]/span")
+	private List<WebElement> accountNo;
 	
 	WebDriver driver;
 	
@@ -95,5 +113,52 @@ public class ManagerPage {
 	{
 		AppHooks.gu.waitForVisibilityofElement(driver, 20, addCustomerBtn);
 		AppHooks.gu.clickByJS(driver, addCustomerBtn);
+	}
+	public void clickonOpenAccount()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnOpenAccount);
+		AppHooks.gu.clickByJS(driver, btnOpenAccount);
+	}
+	public void clickonCustomer()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnOpenAccount);
+		AppHooks.gu.clickByJS(driver, btnCustomer);
+	}
+	public void selectUser(String name)
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, userSelect);
+		AppHooks.gu.selectByVisibleText(userSelect, name);
+	}
+	public void selectCurrenecy(String name)
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, currencySelect);
+		AppHooks.gu.selectByVisibleText(currencySelect, name);
+	}
+	public void clickonProcess()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnProcess);
+		AppHooks.gu.clickByJS(driver, btnProcess);
+	}
+	public void searchCustomer(String customerName)
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, searchCustomer);
+		searchCustomer.sendKeys(customerName);
+	}
+	public boolean accountNumbers()
+	{
+	    for(int i=0;i<accountNo.size();i++)
+	    {
+	    	if(accountNo.get(i).isDisplayed())
+	    	{
+	    		return true;
+	    	}
+	    	else
+	    		return false;
+	    }
+		return false; 
+	}
+	public int  totalAccounts()
+	{
+		return accountNo.size();
 	}
 }

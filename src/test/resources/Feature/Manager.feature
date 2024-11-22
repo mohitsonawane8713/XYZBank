@@ -14,9 +14,23 @@ And Last Name Field should be Displayed
 And Postal Code Field should be Displayed
 And Add Customer button should be Displayed
 
-@smoke
+#@smoke
 Scenario: Verify Create Customer with Valid Crediantials
 When Click on Add Customer
-When User Enter Valid Crediantials
-And User Click on Add Customer button
-Then Customer should be Created Successfully 
+When Manager Enter Valid Crediantials
+And Manager Click on Add Customer button
+Then Customer should be Created Successfully
+
+#@smoke
+Scenario: Verify Open Account with Created User
+When Manager Click on Open Account button
+When Manager Select Customer Name is "Ron Weasly"
+And Manager Select Currency is "Dollar"
+And Manager Click on Process button
+Then Account Should be Created Successfully
+
+#@smoke
+Scenario: Verify Total Account of Single User
+When Manager Click on Customers
+When Manager Search Customer Name "Ron Weasly"
+Then Customer Account Information Should be Displayed

@@ -58,4 +58,9 @@ public class LoginPage {
 		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnManagerLogin);
 		AppHooks.gu.clickByJS(driver, btnManagerLogin);	
 	}
+	public void clickonCustomerLogin()
+	{
+		AppHooks.gu.waitForVisibilityofElement(driver, 20, btnCustomeLogin);
+		AppHooks.gu.clickByJS(driver, btnCustomeLogin);	
+	}
 }
