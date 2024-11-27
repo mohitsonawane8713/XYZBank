@@ -16,7 +16,7 @@ public class LoginStepDef {
 	
 	@When("User is on Login Page")
 	public void user_is_on_login_page() {
-	    AppHooks.driver.get(AppHooks.prop.getProperty("Url"));
+	    AppHooks.driver.get(AppHooks.cr.getApplicationURl());
 	    lp = new LoginPage(AppHooks.driver);
 	}
 	@Then("URL is Displayed as Expected")

@@ -14,7 +14,7 @@ And Last Name Field should be Displayed
 And Postal Code Field should be Displayed
 And Add Customer button should be Displayed
 
-#@smoke
+@smoke
 Scenario: Verify Create Customer with Valid Crediantials
 When Click on Add Customer
 When Manager Enter Valid Crediantials

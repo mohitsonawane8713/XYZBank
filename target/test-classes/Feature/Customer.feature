@@ -1,6 +1,5 @@
 Feature: Customer Page Feature
 
-
 Scenario: Verify Customer Login Fields
 Given User is on Login Page
 When User Click on Customer button 

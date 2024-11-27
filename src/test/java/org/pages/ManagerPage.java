@@ -144,19 +144,6 @@ public class ManagerPage {
 		AppHooks.gu.waitForVisibilityofElement(driver, 20, searchCustomer);
 		searchCustomer.sendKeys(customerName);
 	}
-	public boolean accountNumbers()
-	{
-	    for(int i=0;i<accountNo.size();i++)
-	    {
-	    	if(accountNo.get(i).isDisplayed())
-	    	{
-	    		return true;
-	    	}
-	    	else
-	    		return false;
-	    }
-		return false; 
-	}
 	public int  totalAccounts()
 	{
 		return accountNo.size();

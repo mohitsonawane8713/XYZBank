@@ -22,14 +22,15 @@ public class AppHooks {
 	public static WebDriver driver;
 	public static GenericUtility gu;
 	public static Scenario scn;
+	public static ConfigReader cr;
 
 	@Before
 	public void launchBrowser(Scenario scn)
 	{
-		ConfigReader cr = new ConfigReader();
-	    prop=cr.readPropetyData();
+		cr = new ConfigReader();
+	    prop=cr.readPropertyData();
 		DriverFactory df = new DriverFactory();
-		driver = df.initDriver(prop.getProperty("BrowserName"));
+		driver = df.initDriver(cr.getBrowserName());
 		gu = new GenericUtility();
 		AppHooks.scn = scn;
 	}

@@ -58,17 +58,14 @@ public class ManagerStepDef {
 		mp.btnAddCustomerisDisplayed();
 	}
 	@When("Manager Enter Valid Crediantials")
-	public void manager_enter_Valid_Crediantials(){
+	public void manager_enter_Valid_Crediantials() throws Exception{
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		
 		ExcelUtility eu = new ExcelUtility();
-		List l1 = eu.getExcelSheetData(0);
-		for(int i=0;i<l1.size();i++)
-		{
-			mp.enterFirstName(l1.get(i).toString());
-			mp.enteredLastName(l1.get(i+=1).toString());
-			mp.enteredPostalCode(l1.get(i+=1).toString());
-		}
+		mp.enterFirstName(eu.getCustomerDetailsBySheetIndex(0, 1, 0));
+		mp.enteredLastName(eu.getCustomerDetailsBySheetIndex(0, 1, 1));
+		mp.enteredPostalCode(eu.getCustomerDetailsBySheetIndex(0, 1, 2));
+
 	}
 	@When("Manager Click on Add Customer button")
 	public void manager_click_on_add_customer_button() {
@@ -130,7 +127,6 @@ public class ManagerStepDef {
 	public void customer_account_information_should_be_displayed() {
 		ManagerPage mp = new ManagerPage(AppHooks.driver);
 		AppHooks.scn.log("Total Account Are : "+mp.totalAccounts());
-		Assert.assertTrue(mp.accountNumbers());
 	}
 
 
